@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>CSS Speech Bubbles</title>
+	<link rel="stylesheet" href="bubbles.css" type="text/css" media="screen" charset="utf-8" />
+	<script type="text/JavaScript" src="rounded_corners.inc.js"></script>
+	<script type="text/JavaScript">
+	  window.onload = function() {
+	      settings = {
+	          tl: { radius: 10 },
+	          tr: { radius: 10 },
+	          bl: { radius: 10 },
+	          br: { radius: 10 },
+	          antiAlias: true,
+	          autoPad: true
+	      }
+	      var myBoxObject = new curvyCorners(settings, "rounded");
+	      myBoxObject.applyCornersToAll();
+	  }
+	</script>
+</head>
+
+<body>
+	<div class="bubble">
+		<blockquote>
+			<p>Works great for blog comments!</p>
+		</blockquote>
+		<cite><strong>John Smith</strong> on 1st January 2007 at 3:55pm</cite>
+	</div>
+	
+	<div class="bubble">
+		<div class="rounded">
+			<blockquote>
+				<p>Customize colors and styling to your taste from within the CSS, then simply edit the pointer tip image. Works on any background to fit with your design.</p>
+			</blockquote>
+		</div>
+		<cite class="rounded"><strong>Rounded Bubble</strong> using <a href="http://www.curvycorners.net/">curvy corners</a></cite>
+	</div>
+	
+	<div id="pimped" class="bubble">
+		<div class="rounded">
+			<blockquote>
+				<p>Expands to fit any layout and scales nicely with big and small font sizes.</p>
+			</blockquote>
+		</div>
+		<cite class="rounded"><strong>Dark Bubble</strong></cite>
+	</div>
+	
+	<br />
+	<p><strong><a href="http://www.willmayo.com/journal/projects/07/bubbles/download.zip">Download Package (zip)</a></strong><br />
+	<small><em>CSS Speech Bubbles from <a href="http://www.willmayo.com">willmayo.com</a></em></small></p>
+	
+</body>
+</html>

@@ -1,0 +1,29 @@
+RewriteEngine on
+AddType application/x-httpd-php ws .ws
+RewriteRule ^alliance/([^/\.]+)/?$ ./alliance/index.php?Name=$1
+RewriteRule ^confirm/([^/\.]+)/?$ ./confirm/index.php?Code=$1
+RewriteRule ^usercp/([^/\.]+)/?$ ./usercp/index.php?Page=$1
+RewriteRule ^pm/([^/\.]+)/?$ ./privatemessages/index.php?Page=$1
+RewriteRule ^privatemessages/([^/\.]+)/?$ ./privatemessages/index.php?Page=$1
+RewriteRule ^buddylist/([^/\.]+)/([^/\.]+)/?$ ./buddylist/index.php?Type=$1&Page=$2
+RewriteRule ^membership/([^/\.]+)/?$ ./membership/index.php?Page=$1
+RewriteRule ^login/?$ ./index.php?Page=Login
+RewriteRule ^logout/?$ ./index.php?Page=Logout
+RewriteRule ^signup/?$ ./index.php?Page=Register
+RewriteRule ^register/?$ ./index.php?Page=Register
+RewriteRule ^login/?$ ./index.php?Page=Login
+RewriteRule ^screenshots/?$ ./index.php?Page=Screenshots
+RewriteRule ^membership/?$ ./index.php?Page=Membership
+RewriteRule ^donate/?$ ./index.php?Page=Donate
+RewriteRule ^about/?$ ./index.php?Page=About
+RewriteRule ^FAQ/?$ ./index.php?Page=FAQ
+RewriteRule ^termsandconditions/?$ ./index.php?Page=TermsAndConditions
+RewriteRule ^privacypolicy/?$ ./index.php?Page=PrivacyPolicy
+RewriteRule ^resendconfirmation/?$ ./index.php?Page=ResendConfirmation
+RewriteRule ^forgottenpassword/?$ ./index.php?Page=ForgottenPassword
+RewriteRule ^forums/?$ ../Forums/
+RewriteRule ^news/archive/?$	./index.php?Page=NewsArchive
+RewriteRule ^news/article/([0-9]+)/?$	./index.php?NewsArticle=$1
+RewriteRule ^news/comments/([0-9]+)/?$	./index.php?NewsComments=$1
+RewriteRule ^user/([^/\.]+)/?$ ./user/index.php?User=$1
+RewriteRule ^member/([^/\.]+)/?$ ./user/index.php?User=$1 [L]
