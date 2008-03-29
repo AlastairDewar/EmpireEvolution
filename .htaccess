@@ -11,7 +11,6 @@ RewriteRule ^login/?$ ./index.php?Page=Login
 RewriteRule ^logout/?$ ./index.php?Page=Logout
 RewriteRule ^signup/?$ ./index.php?Page=Register
 RewriteRule ^register/?$ ./index.php?Page=Register
-RewriteRule ^login/?$ ./index.php?Page=Login
 RewriteRule ^screenshots/?$ ./index.php?Page=Screenshots
 RewriteRule ^membership/?$ ./index.php?Page=Membership
 RewriteRule ^donate/?$ ./index.php?Page=Donate
