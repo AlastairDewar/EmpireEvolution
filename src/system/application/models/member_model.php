@@ -57,14 +57,14 @@ class Member_model extends Model
   }
 
   function get_uid_from_username($username){
-	$query = $this->db->query('SELECT ID FROM player WHERE username = "'.$username.'" LIMIT 1;');
+	$query = $this->db->query('SELECT uid FROM player WHERE username = "'.$username.'" LIMIT 1;');
 	$row = $query->row_array();
-	return $row['ID'];
+	return $row['uid'];
   }
 
   function generate_confirmation($uid){
 	$code = substr(md5($uid.date('l jS \of F Y h:i:s A')."deDu85ct"),0,8);
-	$sql = "INSERT INTO confirmation (player_uid, code) VALUES (".$this->db->escape($uid).", ".$code.");";
+	$sql = "INSERT INTO confirmation (player_uid, code) VALUES (".$this->db->escape($uid).", '".$code."');";
 	$this->db->query($sql);
 	return $code;
   }

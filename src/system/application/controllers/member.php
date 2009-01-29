@@ -60,7 +60,7 @@ class Member extends Controller {
 		}
 		else
 		{
-			$this->login();	
+			redirect('/member/login','refresh');
 		}
 	}
 
@@ -84,7 +84,7 @@ class Member extends Controller {
 		}
 		else
 		{
-			redirect('/welcome/home/', 'refresh');
+			redirect('/welcome/', 'refresh');
 		}
 	}
 
@@ -198,7 +198,7 @@ class Member extends Controller {
 	function restricted_emails($str)
 	{
 		$domain = substr(strstr($str, '@'),1,strlen(strstr($str, '@')));
-		$baddomains = array('mailinator.com');
+		$baddomains = array('mailinator.com','trashymail.com','mailinator2.com','sogetthis.com','mailin8r.com','mailinator.net','spamherelots.com','thisisnotmyrealemail.com');
 		foreach ($baddomains as &$baddomain) {
 			if (strcasecmp($domain, $baddomain) == 0)
 			{

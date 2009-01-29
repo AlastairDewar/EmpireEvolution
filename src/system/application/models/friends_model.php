@@ -5,5 +5,20 @@ class Friends_model extends Model
   {
     parent::Model();
   }
+  
+  function add_friend()
+  {
+  
+  }
+  
+  function remove_friend()
+  {
+  
+  }
+  
+  function list_friends()
+  {
+  
+  }
 }
 ?>

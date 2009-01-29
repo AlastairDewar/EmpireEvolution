@@ -991,7 +991,27 @@ class CI_Form_validation {
 	 */	
 	function valid_email($str)
 	{
-		return ( ! preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $str)) ? FALSE : TRUE;
+		if( ! preg_match("/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix", $str))
+		{
+			return FALSE;
+		}
+		else
+		{
+			if(filter_var($str, FILTER_VALIDATE_EMAIL))
+			{
+				if (function_exists('checkdnsrr')) {
+					$index = strrpos($str,'@');
+					$domain = substr($str, $index + 1);
+					if (!(checkdnsrr($domain, 'A') || checkdnsrr($domain, 'MX'))) {
+						return FALSE; // Domain doesn't actually exist
+					}
+				}
+			}
+			else
+			{
+				return FALSE;
+			}
+		}
 	}
 
 	// --------------------------------------------------------------------
