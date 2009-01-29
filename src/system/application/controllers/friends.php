@@ -7,41 +7,43 @@ class Friends extends Controller {
 		parent::Controller();	
 		$this->load->library('parser');
 		$this->load->model('Friends_model');
-		$this->load->controller('Member');
 	}
 
 	function index()
 	{
-		if($this->Member->logged_in())
+		if($this->Member_model->logged_in())
 		{
-			$this->friends_panel();
+			$this->panel();
 		}
 		else
 		{
-			$this->Member->login();	
+			redirect('/member/login','refresh');	
 		}
 	}
 
-	function friends_panel()
+	function panel()
 	{
 
 	}
 
-	function add()
+	function add($uid)
 	{
+		// TODO Check for login
 		// TODO Check for validity
 		// TODO Load the friends_add view OR process it
 	}
 
-	function remove()
+	function remove($uid)
 	{
+		// TODO Check for login
 		// TODO Check for validity
 		// TODO Check for confirmation
 		// TODO Load the friends_remove view OR process it
 	}
 
-	function comparison()
+	function comparison($uid1, $uid2)
 	{
+		// TODO Check for login
 		// TODO Check for validity
 		// TODO Load the friends_comparison view OR process it	
 	}

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class Research_model extends Model
 {
   function Research_model()
@@ -7,4 +7,3 @@ class Research_model extends Model
   }
 }
 ?>
-

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class Friends_model extends Model
 {
   function Friends_model()
@@ -7,4 +7,3 @@ class Friends_model extends Model
   }
 }
 ?>
-

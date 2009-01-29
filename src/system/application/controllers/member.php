@@ -1,19 +1,16 @@
 <?php
-
 class Member extends Controller {
 
 	function Member()
 	{
-		parent::Controller();	
-		$this->load->library('parser');
-		$this->load->model('Member_model');
+		parent::Controller();
 	}
 
 	function index()
 	{
-		if($this->logged_in())
+		if($this->Member_model->logged_in())
 		{
-			$this->member_panel();
+			$this->panel();
 		}
 		else
 		{
@@ -40,7 +37,7 @@ class Member extends Controller {
 	{
 			//  If no uid is given and logged in, give users page
 			//
-			//  if($uid == 0 && $this->logged_in())
+			//  if($uid == 0 && $this->Member_model->logged_in())
 			//  {
 			//  	$uid = $this->session->userdata('uid');
 			//  }
@@ -53,9 +50,9 @@ class Member extends Controller {
 			$this->parser->parse('member_profile', $template_data);}
 	}
 
-	function member_panel()
+	function panel()
 	{
-		if($this->logged_in())
+		if($this->Member_model->logged_in())
 		{			
 			$template_data = array();
     			$template_data['username'] = "Username";
@@ -67,17 +64,9 @@ class Member extends Controller {
 		}
 	}
 
-	function logged_in()
-	{
-		if($this->session->userdata('logged_in') === TRUE)
-		{
-			return TRUE;
-		}
-	 }
-
 	function logout()
 	{
-		if($this->logged_in())
+		if($this->Member_model->logged_in())
 		{			
 			$this->load->helper(array('form', 'url'));
 			$this->load->library('form_validation');
@@ -90,18 +79,18 @@ class Member extends Controller {
 			{
 				$array_items = array('logged_in' => FALSE);
 				$this->session->unset_userdata($array_items);
-				$this->load->view('home');
+				redirect('/welcome/','refresh');
 			}
 		}
 		else
 		{
-			$this->member_panel();	
+			redirect('/welcome/home/', 'refresh');
 		}
 	}
 
 	function login()
 	{
-		if($this->logged_in())
+		if(!$this->Member_model->logged_in())
 		{			
 			$this->load->helper(array('form', 'url'));
 			$this->load->library('form_validation');
@@ -118,13 +107,12 @@ class Member extends Controller {
 				$uid = $this->Member_model->get_uid_from_username($username);
 				$newdata = array('uid'  => $uid,'logged_in' => TRUE);
 				$this->session->set_userdata($newdata);
-				$this->member_panel();
-		
+				$this->panel();
 			}
 		}
 		else
 		{
-			$this->load->view('home');	
+			$this->panel();	
 		}
 	}
 

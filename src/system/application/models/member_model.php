@@ -1,10 +1,18 @@
-﻿<?php
+<?php
 class Member_model extends Model
 {
   function Member_model()
   {
-    parent::Model();
+	parent::Model();
   }
+
+  function logged_in()
+  {
+	if($this->session->userdata('logged_in') === TRUE)
+	{
+		return TRUE;
+	}
+ }
 
   function valid_login($uid, $password)
   {
@@ -74,4 +82,3 @@ class Member_model extends Model
   }
 }
 ?>
-
