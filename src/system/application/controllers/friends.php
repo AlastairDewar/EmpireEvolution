@@ -18,7 +18,7 @@ class Friends extends Controller {
 		}
 		else
 		{
-			$this->login();	
+			$this->Member->login();	
 		}
 	}
 
@@ -29,17 +29,21 @@ class Friends extends Controller {
 
 	function add()
 	{
-
+		// TODO Check for validity
+		// TODO Load the friends_add view OR process it
 	}
 
 	function remove()
 	{
-
+		// TODO Check for validity
+		// TODO Check for confirmation
+		// TODO Load the friends_remove view OR process it
 	}
 
 	function comparison()
 	{
-
+		// TODO Check for validity
+		// TODO Load the friends_comparison view OR process it	
 	}
 }
 

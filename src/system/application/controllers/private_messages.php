@@ -18,48 +18,69 @@ class Private_Messages extends Controller {
 		}
 		else
 		{
-			$this->login();	
+			$this->Member->login();	
 		}
 	}
 
 	function private_messages_panel()
 	{
-
+		// TODO Check for login
+		// TODO Load the private_messages_panel view
 	}
 	
+	function view_message()
+	{
+		// TODO Check for login
+		// TODO Check for validity (sender/recipient)
+		// TODO Load the private_messages_view_message view
+	}
+
 	function inbox()
 	{
-	
+		// TODO Check for login
+		// TODO Load the inbox messages
+		// TODO Load the private_messages_inbox view	
 	}
 
 	function sent_messages()
 	{
-
+		// TODO Check for login
+		// TODO Load the inbox messages
+		// TODO Load the private_messages_sent_messages view	
 	}
 
 	function send_mail()
 	{
-
+		// TODO Check for login
+		// TODO Check for validity
+		// TODO Load the private_messages_send_mail view or process it	
 	}
 
 	function drafts()
 	{
-
+		// TODO Check for login
+		// TODO Load the drafts messages
+		// TODO Load the private_messages_drafts view	
 	}
 
 	function delete()
 	{
-
+		// TODO Check for login
+		// TODO Check for validity
+		// TODO Check for confirmation 
+		// TODO Load the private_messages_delete view or process it	
 	}
 
 	function mark_as_read()
 	{
-
+		// TODO Check for login
+		// TODO Check for validity	
 	}
 
 	function mark_as_unread()
 	{
-
+		// TODO Check for login
+		// TODO Check for validity
 	}
 }
 
