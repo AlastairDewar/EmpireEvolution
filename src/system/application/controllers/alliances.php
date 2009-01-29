@@ -1,11 +1,10 @@
 <?php
-class Friends extends Controller {
+class Alliances extends Controller {
 
-	function Friends()
+	function Alliances()
 	{
-		parent::Controller();	
-		$this->load->library('parser');
-		$this->load->model('Friends_model');
+		parent::Controller();	;
+		$this->load->model('Alliances_model');
 	}
 
 	function index()
@@ -25,11 +24,11 @@ class Friends extends Controller {
 
 	}
 
-	function add($uid)
+	function join($uid)
 	{
 		// TODO Check for login
 		// TODO Check for validity
-		// TODO Load the friends_add view OR process it
+		// TODO Load the alliance_join view OR process it
 	}
 
 	function remove($uid)
@@ -37,14 +36,13 @@ class Friends extends Controller {
 		// TODO Check for login
 		// TODO Check for validity
 		// TODO Check for confirmation
-		// TODO Load the friends_remove view OR process it
+		// TODO Load the alliance_remove view OR process it
 	}
 
-	function comparison($uid1, $uid2)
+	function info($uid)
 	{
-		// TODO Check for login
 		// TODO Check for validity
-		// TODO Load the friends_comparison view OR process it	
+		// TODO Load the alliances_info view
 	}
 }
 
