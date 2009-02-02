@@ -29,14 +29,13 @@ class Member_model extends Model
 			$this->db->query("UPDATE `player` SET `activity` = '".time()."' WHERE `uid` = '".$this->get_uid()."' LIMIT 1;");}
    }
  
-  function get_username()
+  function get_username($uid = null)
  {
-	 if($this->logged_in())
-	 {
-		$query = $this->db->query('SELECT `username` FROM `player` WHERE uid = "'.$this->get_uid().'" LIMIT 1;');
+	if($uid == null && $this->logged_in()){$uid = $this->get_uid();}
+	if($uid != null){
+		$query = $this->db->query('SELECT `username` FROM `player` WHERE uid = "'.$uid.'" LIMIT 1;');
 		$row = $query->row_array();
-		return $row['username'];
-	 }
+		return $row['username'];}
  }
  
   function valid_login($uid, $password)
@@ -48,7 +47,7 @@ class Member_model extends Model
 
   function is_administrator()
   {
-	$query = $this->db->query('SELECT * FROM `player` WHERE `uid` = '.$uid.' LIMIT 1;');
+	$query = $this->db->query('SELECT * FROM `player` WHERE `uid` = '.$this->get_uid().' LIMIT 1;');
 	$row = $query->row_array();
 	if($row['rights'] == 2)
 	{

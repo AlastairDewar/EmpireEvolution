@@ -16,7 +16,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 body {
 	line-height: 1;
 	color: #5a5a5a;
-	background: #fff url(images/admin/bg_green.jpg) repeat-x;
+	background: #fff url(../../images/admin/bg_green.jpg) repeat-x;
 	font: 62.5% Arial, Helvetica, sans-serif;
 }
 ol, ul {
@@ -49,11 +49,14 @@ hr {
 	clear: both;
 }
 .break {
-	background: #fff url(images/admin/hr.gif) repeat-x center;
+	background: #fff url(../images/admin/hr.gif) repeat-x center;
 	width: 100%;
 	height: 1px;
 	padding: 10px 0;
 	margin-bottom: 20px;
+}
+.center {
+	text-align:center;
 }
 /* Link Styles */
 a:link, a:visited {
@@ -126,7 +129,7 @@ h1 {
 #navigation li {
 	float: left;
 	margin-right: 2px;
-	background: url(images/admin/right-tab.gif) no-repeat 100% 0px;
+	background: url(../images/admin/right-tab.gif) no-repeat 100% 0px;
 	font-size: 1.4em;
 }
 #navigation li a {
@@ -136,7 +139,7 @@ h1 {
 	hei\ght: 1.4em; /* All Other Browsers */
 	padding: 0.6em 1.5em 0.1em 1.4em;
 	letter-spacing: -0.03em;
-	background: url(images/admin/left-tab.gif) no-repeat 0% 0px;
+	background: url(../images/admin/left-tab.gif) no-repeat 0% 0px;
 	color: #ddff81;
 	text-decoration: none;
 	overflow: hidden;
@@ -314,7 +317,7 @@ td {
 	font-size: 1.5em;
 	font-weight: bold;
 	padding: 20px 0px 15px 20px;
-	background: #e2e2e2 url(images/admin/h2-bg.png) repeat-y 0 0;
+	background: #e2e2e2 url(../images/admin/h2-bg.png) repeat-y 0 0;
 	border-bottom: 1px solid #d8d8d8;
 }
 #sidebar p {
@@ -325,9 +328,13 @@ td {
 	margin-left: 25px;
 }
 #sidebar li {
-	background: url(images/admin/li.gif) no-repeat 0 50%;
+	background: url(../images/admin/li.gif) no-repeat 0 50%;
 	padding-left: 10px;
 	line-height: 1.7em;
 }
 
-
+.report {
+width:16px;
+height:16px;
+float:right;
+}

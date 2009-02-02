@@ -3,7 +3,8 @@ class Admin extends Controller {
 
 	function Admin()
 	{
-		parent::Controller();	
+		parent::Controller();
+		$this->load->model('Admin_model');
 	}
 	
 	function index()
@@ -28,7 +29,9 @@ class Admin extends Controller {
 	function dashboard()
 	{
 		$template_data = array();
-    	$template_data['username'] = "AdminUsername";
+    	$template_data['username'] = $this->Member_model->get_username();
+		$template_data['mod_log'] = array('There are currently no Moderator logs');
+		$template_data['admin_log'] = $this->Admin_model->get_logs();
 		$this->parser->parse('admin_dashboard', $template_data);}
 	}
 
