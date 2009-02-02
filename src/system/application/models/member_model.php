@@ -8,6 +8,7 @@ class Member_model extends Model
 
   function logged_in()
   {
+	// TODO Check for account being confirmed
 	if($this->session->userdata('logged_in') == 1)
 	{
 		return TRUE;

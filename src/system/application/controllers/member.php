@@ -20,17 +20,24 @@ class Member extends Controller {
 
 	function change_password()
 	{
-
+		// TODO Check for login
+		// TODO Check for original password
+		// TODO Check for validity
+		// TODO Load the member_change_password view OR process it
 	}
 
 	function password_reminder()
 	{
-
+		// TODO Check for validity
+		// TODO Check for account from Username / Email
+		// TODO Load the member_password_reminder view OR process it		
 	}
 
 	function username_reminder()
 	{
-
+		// TODO Check for validity
+		// Check for account from Email
+		// TODO Load the member_username_reminder view OR process it
 	}
 
 	function profile()
