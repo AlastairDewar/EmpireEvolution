@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Empire Evolution</title>
+<title>Empire Evolution - Administration</title>
 <link href="<?=base_url()?>/css/admin.css" rel="stylesheet" type="text/css" media="all" /></head>
 <body>
 <div id="wrapper">
@@ -10,7 +10,7 @@
     <ul id="navigation">
       <li class="current_page_item"><?php echo anchor('admin/dashboard', 'Dashboard'); ?></li>
       <li><?php echo anchor('admin/news', 'News'); ?></li>
-	  <li><?php echo anchor('admin/players', 'Players'); ?></li>
+	  <li><?php echo anchor('admin/members', 'Members'); ?></li>
       <li><?php echo anchor('admin/buildings', 'Buildings'); ?></li>
 	  <li><?php echo anchor('admin/research', 'Research'); ?></li>
     </ul>
@@ -18,32 +18,32 @@
   </div>
   <div id="content">
     <h1>Dashboard</h1>
-    <p>Welcome {username} to the admin dashboard.</p>
+    <p>Welcome {username} to the administrators main dashboard.</p>
     <div class="break"></div>
-    <h1>Whats been going on?</h1>
+    <h1>Whats been going on? <img src="<?=base_url()?>images/rss.png" alt="RSS Feed" width="16px" height="16px"/></h1>
       <table width="610px" border="0" cellspacing="0" cellpadding="0">
         <tr class="table_header">
-          <th scope="col">Administrator Logs</th>
+          <th scope="col">Event</th>
+		  <th scope="col">Date</th>
+		  <th scope="col">Flagged</th>
         </tr>
-		<?php foreach($admin_log as $item):?>
+		<?php foreach($admin_logs as $item):?>
 				<tr class="table_info">
-				  <td colspan="1"><?php echo $item;?></td>
+					<td colspan="1"><?php echo $item['event'];?></td>
+					<td colspan="1"><?php echo $item['date'];?></td>
+					<td colspan="1"><?php echo $item['flagged'];?></td>
 				</tr>
 		<?php endforeach;?>	
       </table>
-      <br class="clear" />	
-      <table width="610px" border="0" cellspacing="0" cellpadding="0">
-        <tr class="table_header">
-          <th scope="col">Moderator Logs</th>
-        </tr>
-		<?php foreach($mod_log as $item):?>
-				<tr class="table_info">
-				  <td colspan="1"><?php echo $item;?></td>
-				</tr>
-		<?php endforeach;?>	
-      </table>
-      <br class="clear" />		  
+      <br class="clear" />
 	  <p class="center"><strong>All</strong> actions are logged, backed up and reviewed regularly. All misconduct is duely noted.</p>
+  </div>
+      <div id="sidebar">
+    <h2>Dashboard</h2>
+    <p>Here are some related links you might be interested in:</p>
+    <ul>
+      <li><?php echo anchor('admin/view_logs/', 'View all logs'); ?></li>
+    </ul>
   </div>
       <br class="clear" />
   <div id="footer"> </div>

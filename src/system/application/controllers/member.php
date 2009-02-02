@@ -162,7 +162,7 @@ class Member extends Controller {
 				$uid = $this->Member_model->get_uid_from_username($username);
 				$code = $this->Member_model->generate_confirmation($uid);
 				$this->load->library('email');
-				  $this->email->from('Registration@alastairdewar.co.uk');
+				  $this->email->from('Registration@empev.co.cc');
 				  $this->email->to($emailaddress);
 				  $this->email->subject('Empire Evolution Registration');
 				  $message = "Thank you for registering at Empire Evolution\r\n\r\n";
