@@ -27,24 +27,55 @@ class Friends extends Controller {
 
 	function add($uid)
 	{
-		// TODO Check for login
-		// TODO Check for validity
-		// TODO Load the friends_add view OR process it
+		if($this->Member_model->logged_in())
+		{
+			// TODO Check for validity
+			// TODO Load the friends_add view OR process it
+		}
+		else
+		{
+			redirect('/member/login','refresh');	
+		}
 	}
 
 	function remove($uid)
 	{
-		// TODO Check for login
-		// TODO Check for validity
-		// TODO Check for confirmation
-		// TODO Load the friends_remove view OR process it
+		if($this->Member_model->logged_in())
+		{
+			// TODO Check for validity
+			// TODO Load the friends_remove view OR process it
+			// TODO Check for confirmation
+		}
+		else
+		{
+			redirect('/member/login','refresh');	
+		}
 	}
 
 	function comparison($uid1, $uid2)
 	{
-		// TODO Check for login
+		if($this->Member_model->logged_in())
+		{
 		// TODO Check for validity
 		// TODO Load the friends_comparison view OR process it	
+		}
+		else
+		{
+			redirect('/member/login','refresh');	
+		}
+	}
+	
+	function block($uid)
+	{
+		if($this->Member_model->logged_in())
+		{
+			// TODO Check for validity
+			// TODO Load the friends_block_success_view
+		}
+		else
+		{
+			redirect('/member/login','refresh');	
+		}
 	}
 }
 

@@ -1,5 +1,4 @@
 <?php
-
 class Private_Messages extends Controller {
 
 	function Private_Messages()
@@ -53,6 +52,7 @@ class Private_Messages extends Controller {
 	{
 		// TODO Check for login
 		// TODO Check for validity
+		// TODO Check against friend blocks
 		// TODO Load the private_messages_send_mail view or process it	
 	}
 
@@ -69,12 +69,13 @@ class Private_Messages extends Controller {
 		// TODO Check for validity
 		// TODO Check for confirmation 
 		// TODO Load the private_messages_delete view or process it	
+		// TODO Dont actually delete, just hide it
 	}
 
 	function mark_as_read()
 	{
 		// TODO Check for login
-		// TODO Check for validity	
+		// TODO Check for validity
 	}
 
 	function mark_as_unread()

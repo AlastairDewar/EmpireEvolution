@@ -6,7 +6,6 @@ class News extends Controller
 	parent::Controller();	
 	$this->load->library('parser');
 	$this->load->model('News_model');
-	$this->load->model('Member_model');
   }
 
   function index()
@@ -16,7 +15,7 @@ class News extends Controller
 
   function view_article($uid)
   {
-	// TODO Check for validity (visible)
+	// TODO Check for validity (visible, valid uid)
 	// TODO Load the news_view_article view
   }
 
@@ -34,47 +33,91 @@ class News extends Controller
 
   function add()
   {
-	// TODO Check for login
-	// TODO Check for validity
-	// TODO Check for administrator rights
-	// TODO Load the news_add view OR process it
+		if($this->Member_model->logged_in())
+		{
+			// TODO Check for validity
+			// TODO Check for administrator rights
+			// TODO Load the news_add view OR process it
+		}
+		else
+		{
+			redirect('/member/login','refresh');	
+		}
   }
 
   function remove()
   {
-	// TODO Check for login
-	// TODO Check for validity
-	// TODO Check for administrator rights
-	// TODO Check for confirmation
-	// TODO Load the news_remove view OR process it
+		if($this->Member_model->logged_in())
+		{
+			// TODO Check for validity
+			// TODO Check for administrator rights
+			// TODO Check for confirmation
+			// TODO Load the news_remove view OR process it
+			// TODO Dont delete it, just hide it
+		}
+		else
+		{
+			redirect('/member/login','refresh');
+		}
   }
 
   function edit()
   {
-	// TODO Check for login
-	// TODO Check for validity
-	// TODO Check for administrator rights
-	// TODO Load the news_edit view OR process it
+		if($this->Member_model->logged_in())
+		{
+			// TODO Check for validity
+			// TODO Check for administrator rights
+			// TODO Load the news_edit view OR process it
+			// TODO Add a last updated line
+		}
+		else
+		{
+			redirect('/member/login','refresh');	
+		}
   }
 
   function add_coment()
   {
-	// TODO Check for login
-	// TODO Check for validity (swear filter?, can comment on article, article visibility)
+		if($this->Member_model->logged_in())
+		{
+			// TODO Check for validity (swear filter?, can comment on article, article visibility)
+			// TODO Load the news_comment_add view OR process it
+		}
+		else
+		{
+			redirect('/member/login','refresh');	
+		}
   }
 
   function remove_comment()
   {
-	// TODO Check for login
-	// TODO Check for confirmation
-	// TODO Administrator check
+		if($this->Member_model->logged_in())
+		{
+			// TODO Check for validity (swear filter?, can comment on article, article visibility)
+			// TODO Check for author OR administrator
+			// TODO Load the news_comment_remove view OR process it
+			// TODO Check for confirmation
+			// TODO Just hide it, dont delete it
+		}
+		else
+		{
+			redirect('/member/login','refresh');	
+		}
   }
 
  function edit_comment()
  {
-	// TODO Check for login
-	// TODO Check for validity (see add_comment)
-	// TODO Administrator check (tag it)
+		if($this->Member_model->logged_in())
+		{
+			// TODO Check for validity (swear filter?, can comment on article, article visibility)
+			// TODO Check for author OR administrator
+			// TODO Load the news_comment_edit view OR process it
+			// TODO Tag it "<i>Administrator: This is a warning</i>"
+		}
+		else
+		{
+			redirect('/member/login','refresh');	
+		}
  }
 }
 

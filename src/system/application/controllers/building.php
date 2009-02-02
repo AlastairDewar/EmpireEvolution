@@ -24,7 +24,7 @@ class Building extends Controller {
   {
 	if($this->Member_model->logged_in())
 	{
-		// TODO Load the building panel	
+		// TODO Load the building_panel view
 	}
 	else
 	{
@@ -71,10 +71,16 @@ class Building extends Controller {
   {
 	if($this->Member_model->logged_in())
 	{			
+		if($this->Member_model->is_administrator())
+		{
 		// TODO Check for validity in uid
-		// TODO Check for administrator rights
 		// TODO Check for confirmation
 		// TODO Load the building_edit view OR process it
+		}
+		else
+		{
+			redirect('/member/panel','refresh');	
+		}
 	}
 	else
 	{
@@ -86,10 +92,16 @@ class Building extends Controller {
   {
 	if($this->Member_model->logged_in())
 	{
-		// TODO Check for validity in uid
-		// TODO Check for administrator rights
+		if($this->Member_model->is_administrator())
+		{
+		// TODO Check for validity
 		// TODO Check for confirmation
 		// TODO Load the building_add view OR process it
+		}
+		else
+		{
+			redirect('/member/panel','refresh');	
+		}
 	}
 	else
 	{
@@ -101,10 +113,16 @@ class Building extends Controller {
   {
 	if($this->Member_model->logged_in())
 	{
+		if($this->Member_model->is_administrator())
+		{
 		// TODO Check for validity in uid
-		// TODO Check for administrator rights
 		// TODO Check for confirmation
 		// TODO Load the building_remove view OR process it
+		}
+		else
+		{
+			redirect('/member/panel','refresh');	
+		}
 	}
 	else
 	{
