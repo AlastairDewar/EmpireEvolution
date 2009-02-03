@@ -31,17 +31,46 @@ class News extends Controller
 	// TODO Load the news_archive view 
   }
 
-  function add()
+ function add()
   {
 		if($this->Member_model->logged_in())
-		{
-			// TODO Check for validity
-			// TODO Check for administrator rights
-			// TODO Load the news_add view OR process it
+		{		
+			if($this->Member_model->is_administrator())
+			{
+				$this->load->helper(array('form', 'url'));
+				$this->load->library('form_validation');
+				$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+				$this->form_validation->set_rules('title', 'Title', 'required|min_length[6]|max_length[255]');
+				$this->form_validation->set_rules('article', 'Article', 'required|min_length[30]|max_length[800]');
+				// TODO Add visibility flag
+				if ($this->form_validation->run() == FALSE)
+				{
+					$this->load->model('News_model');
+					$template_data = array();
+					$template_data['username'] = $this->Member_model->get_username();
+					$this->parser->parse('news_add', $template_data);
+				}
+				else
+				{
+					$this->News_model->add();
+					$this->load->view('news_add_success');
+				}
+			}
 		}
-		else
-		{
-			redirect('/member/login','refresh');	
+  }
+  
+ function overview()
+  {
+		if($this->Member_model->logged_in())
+		{		
+			if($this->Member_model->is_administrator())
+			{
+						$this->load->model('News_model');
+						$template_data = array();
+						$template_data['username'] = $this->Member_model->get_username();
+						$template_data['news_articles'] = $this->News_model->get_all_articles();
+						$this->parser->parse('news_overview', $template_data);
+			}
 		}
   }
 
@@ -120,6 +149,5 @@ class News extends Controller
 		}
  }
 }
-
 /* End of file news.php */
 /* Location: ./system/application/controllers/news.php */

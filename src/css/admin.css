@@ -80,6 +80,13 @@ h1 {
 	margin-bottom: 15px;
 	padding-top: 10px;
 }
+h3 {
+	font-size: 2.0em;
+	color: #26272b;
+	font-weight: bold;
+	margin-bottom: 15px;
+	padding-top: 10px;
+}
 /* General Styles */
 .hidden {
 	display: none;
@@ -203,7 +210,7 @@ form {
 	margin: 40px 0px 20px 0px;
 }
 label, span{
-	font-size: 1.5em;
+	font-size: 2.5em;
 }
 label {
 	display: block;

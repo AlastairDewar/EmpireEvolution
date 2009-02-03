@@ -20,21 +20,11 @@
     <h1>Dashboard</h1>
     <p>Welcome {username} to the administrators main dashboard.</p>
     <div class="break"></div>
-    <h1>Whats been going on? <img src="<?=base_url()?>images/rss.png" alt="RSS Feed" width="16px" height="16px"/></h1>
-      <table width="610px" border="0" cellspacing="0" cellpadding="0">
-        <tr class="table_header">
-          <th scope="col">Event</th>
-		  <th scope="col">Date</th>
-		  <th scope="col">Flagged</th>
-        </tr>
-		<?php foreach($admin_logs as $item):?>
-				<tr class="table_info">
-					<td colspan="1"><?php echo $item['event'];?></td>
-					<td colspan="1"><?php echo $item['date'];?></td>
-					<td colspan="1"><?php echo $item['flagged'];?></td>
-				</tr>
-		<?php endforeach;?>	
-      </table>
+    <h1>Whats been going on?</h1>
+	<p>Here's the best place to leave notes for other administrators.</p>
+		<?php //echo validation_errors(); ?>
+		<?php //echo form_open('admin/notes'); ?>
+	<textarea cols="85" rows="15"></textarea>
       <br class="clear" />
 	  <p class="center"><strong>All</strong> actions are logged, backed up and reviewed regularly. All misconduct is duely noted.</p>
   </div>

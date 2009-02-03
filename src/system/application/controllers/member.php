@@ -145,10 +145,10 @@ class Member extends Controller {
 			$this->load->helper(array('form', 'url'));
 			$this->load->library('form_validation');
 			$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
-			$this->form_validation->set_rules('username', 'Username', 'required|min_length[5]|max_length[12]|alpha_dash|callback_restricted_usernames');
-			$this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_lenth[32]|alpha_dash|matches[passconf]');
+			$this->form_validation->set_rules('username', 'Username', 'required|min_length[5]|max_length[12]|alpha_dash|trim|xss_clean|callback_restricted_usernames');
+			$this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_lenth[32]|alpha_dash|xss_clean|matches[passconf]');
 			$this->form_validation->set_rules('passconf', 'Password Confirmation', 'required');
-			$this->form_validation->set_rules('email', 'Email', 'required|valid_email|callback_restricted_emails');
+			$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|xss_clean|callback_restricted_emails');
 			if ($this->form_validation->run() == FALSE)
 			{
 				$this->load->view('member_register');
