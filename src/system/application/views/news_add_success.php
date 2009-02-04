@@ -18,7 +18,7 @@
     <p id="user_info">Logged in as {username}, <?php echo anchor('member/logout', 'Logout?'); ?></p>
   </div>
   <div id="content">
-    <h1>News Dashboard</h1>
+    <h1>News</h1>
     <div class="break"></div>
     <h1>News article successfully added!</h1>
 		<p>Your article has successfully been added to the database.</p>
@@ -31,7 +31,7 @@
     <ul>
       <li><?php echo anchor('news/overview/', 'View all articles'); ?></li>
 	  <li><?php echo anchor('news/add/', 'Add a new article'); ?></li>
-      <li><?php echo anchor('news/edit/', 'Edit a current article'); ?></li>
+      <li><?php echo anchor('news/edit/', 'Edit an article'); ?></li>
       <li><?php echo anchor('news/delete/', 'Delete an article'); ?></li>
     </ul>
 	<p>Remember, there are links next to each article on the left hand side under the "<strong>Whats been going on?</strong>" section.</p>

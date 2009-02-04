@@ -24,7 +24,7 @@
 	<p>Here's the best place to leave notes for other administrators.</p>
 		<?php //echo validation_errors(); ?>
 		<?php //echo form_open('admin/notes'); ?>
-	<textarea cols="85" rows="15"></textarea>
+	<textarea cols="73" rows="15"></textarea>
       <br class="clear" />
 	  <p class="center"><strong>All</strong> actions are logged, backed up and reviewed regularly. All misconduct is duely noted.</p>
   </div>

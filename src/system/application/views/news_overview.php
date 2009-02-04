@@ -45,26 +45,27 @@
     <p id="user_info">Logged in as {username}, <?php echo anchor('member/logout', 'Logout?'); ?></p>
   </div>
   <div id="content">
-    <h1>News Dashboard</h1>
+    <h1>News</h1>
+	<p>An overview of each article with links to edit and delete each article</p>
     <div class="break"></div>
     <h1>What articles are there?</h1>
      <table width="610px" border="0" cellspacing="0" cellpadding="0">
         <tr class="table_header">
           <th scope="col">Title</th>
-		   <th scope="col">Author</th>
-		  <th scope="col">Date</th>
-		  <th scope="col">Published</th>
-		  <th scope="col">Edit</th>
-		  <th scope="col">Delete</th>		  
+		  <th scope="col" width="18%">Author</th>
+		  <th scope="col" width="55%">Date</th>
+		  <th scope="col" width="10%">Published</th>
+		  <?php if(isset($highlight) && strcasecmp($highlight,'edit') == 0){echo'<th scope="col"  width="10%" class="highlight">Edit</th>'."\r\n";}else{echo'<th scope="col" width="10%">Edit</th>';}?>
+		  <?php if(isset($highlight) && strcasecmp($highlight,'delete') == 0){echo'<th scope="col"  width="10%" class="highlight">Delete</th>';}else{echo'<th scope="col" width="10%">Delete</th>';}?>
         </tr>
 		<?php foreach($news_articles as $item):?>
 				<tr>
 				  <td colspan="1"><?php echo anchor('news/article/'.$item['uid'], $item['title']); ?></td>
-				  <td colspan="1" width="15%"><?php echo anchor('member/profile/'.$item['author'], $item['author']); ?></td>
-				  <td colspan="1" width="32%"><?php echo $item['date'];?></td>
-				  <td colspan="1" width="10%"><?php echo $item['published'] ?></td>
-				  <td colspan="1" width="10%"><?php echo anchor('news/edit/'.$item['uid'], 'Edit'); ?></td>
-				  <td colspan="1" width="10%"><?php echo anchor('news/delete/'.$item['uid'], 'Delete'); ?></td>
+				  <td colspan="1"><?php echo anchor('member/profile/'.$item['author'], $item['author']); ?></td>
+				  <td colspan="1"><?php echo $item['date'];?></td>
+				  <td colspan="1"><?php echo $item['published'] ?></td>
+				  <td colspan="1"><?php echo $item['edit'] ?></td>
+				  <td colspan="1"><?php echo $item['delete'] ?></td>
 				</tr>
 				<tr class="table_info">
 				<td colspan="6"><div class="article" class="toggle"><?php echo $item['article'] ?></div></td>
@@ -78,10 +79,10 @@
     <h2>News</h2>
     <p>Here are some related links you might be interested in:</p>
     <ul>
-      <li><?php echo anchor('news/overview/', 'View all articles'); ?></li>
-	  <li><?php echo anchor('news/add/', 'Add a new article'); ?></li>
-      <li><?php echo anchor('news/edit/', 'Edit a current article'); ?></li>
-      <li><?php echo anchor('news/delete/', 'Delete an article'); ?></li>
+      	<li><?php echo anchor('news/overview/', 'View all articles'); ?></li>
+	<li><?php echo anchor('news/add/', 'Add a new article'); ?></li>
+      	<li><?php echo anchor('news/edit/', 'Edit an article'); ?></li>
+      	<li><?php echo anchor('news/delete/', 'Delete an article'); ?></li>
     </ul>
 	<p>Remember, there are links next to each article on the left hand side under the "<strong>Whats been going on?</strong>" section.</p>
   </div>

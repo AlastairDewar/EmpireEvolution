@@ -7,6 +7,11 @@ class Private_Messages extends Controller {
 		$this->load->library('parser');
 		$this->load->model('Private_Messages_model');
 		$this->load->controller('Member');
+		$this->load->library('user_agent');
+		if (!$this->agent->is_mobile())
+		{
+			redirect('mobile');
+		}
 	}
 
 	function index()

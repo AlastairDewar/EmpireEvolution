@@ -149,6 +149,7 @@ class Member extends Controller {
 			$this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_lenth[32]|alpha_dash|xss_clean|matches[passconf]');
 			$this->form_validation->set_rules('passconf', 'Password Confirmation', 'required');
 			$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|xss_clean|callback_restricted_emails');
+			// TODO http://codeigniter.com/forums/viewthread/94299/
 			if ($this->form_validation->run() == FALSE)
 			{
 				$this->load->view('member_register');

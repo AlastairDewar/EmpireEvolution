@@ -8,11 +8,11 @@
 <div id="wrapper">
   <div id="header"> <img src="<?=base_url()?>images/admin/logo_green.jpg" height="116" width="530" alt="Logo" />
     <ul id="navigation">
-      <li><?php echo anchor('admin/dashboard', 'Dashboard'); ?></li>
-      <li class="current_page_item"><?php echo anchor('admin/news', 'News'); ?></li>
-	  <li><?php echo anchor('admin/members', 'Members'); ?></li>
-      <li><?php echo anchor('admin/buildings', 'Buildings'); ?></li>
-	  <li><?php echo anchor('admin/research', 'Research'); ?></li>
+      	<li><?php echo anchor('admin/dashboard', 'Dashboard'); ?></li>
+      	<li class="current_page_item"><?php echo anchor('admin/news', 'News'); ?></li>
+	<li><?php echo anchor('admin/members', 'Members'); ?></li>
+      	<li><?php echo anchor('admin/buildings', 'Buildings'); ?></li>
+	<li><?php echo anchor('admin/research', 'Research'); ?></li>
     </ul>
     <p id="user_info">Logged in as {username}, <?php echo anchor('member/logout', 'Logout?'); ?></p>
   </div>
