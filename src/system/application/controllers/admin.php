@@ -35,7 +35,7 @@ class Admin extends Controller {
 				$template_data['username'] = $this->Member_model->get_username();
 				$template_data['mod_logs'] = array('There are currently no Moderator logs<br/>');
 				$template_data['admin_logs'] = $this->Admin_model->get_logs();
-				$this->parser->parse('admin_dashboard', $template_data);
+				$this->parser->parse('admin/admin_dashboard', $template_data);
 			}
 			else
 			{
@@ -58,7 +58,7 @@ class Admin extends Controller {
 				$template_data = array();
 				$template_data['username'] = $this->Member_model->get_username();
 				$template_data['news_logs'] = $this->News_model->get_logs();
-				$this->parser->parse('admin_news', $template_data);
+				$this->parser->parse('admin/admin_news', $template_data);
 			}
 			else
 			{
@@ -80,7 +80,7 @@ class Admin extends Controller {
 				$template_data = array();
 				$template_data['username'] = $this->Member_model->get_username();
 				$template_data['member_logs'] = $this->Member_model->get_logs();
-				$this->parser->parse('admin_members', $template_data);
+				$this->parser->parse('admin/admin_members', $template_data);
 			}
 			else
 			{
@@ -103,7 +103,7 @@ class Admin extends Controller {
 				$template_data = array();
 				$template_data['username'] = $this->Member_model->get_username();
 				$template_data['building_logs'] = $this->Building_model->get_logs();
-				$this->parser->parse('admin_buildings', $template_data);
+				$this->parser->parse('admin/admin_buildings', $template_data);
 			}
 			else
 			{
@@ -126,7 +126,7 @@ class Admin extends Controller {
 				$template_data = array();
 				$template_data['username'] = $this->Member_model->get_username();
 				$template_data['research_logs'] = $this->Research_model->get_logs();
-				$this->parser->parse('admin_research', $template_data);
+				$this->parser->parse('admin/admin_research', $template_data);
 			}
 			else
 			{
