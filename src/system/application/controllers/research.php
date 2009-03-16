@@ -7,11 +7,11 @@ class Research extends Controller {
 	parent::Controller();	
 	$this->load->library('parser');
 	$this->load->model('Research_model');
-		$this->load->library('user_agent');
-		if (!$this->agent->is_mobile())
-		{
-			redirect('mobile');
-		}
+	$this->load->library('user_agent');
+	if ($this->agent->is_mobile())
+	{
+		redirect('mobile');
+	}
   }
 
   function index()

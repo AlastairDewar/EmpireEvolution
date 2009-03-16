@@ -52,11 +52,11 @@
      <table width="610px" border="0" cellspacing="0" cellpadding="0">
         <tr class="table_header">
           <th scope="col">Title</th>
-		  <th scope="col" width="18%">Author</th>
-		  <th scope="col" width="55%">Date</th>
-		  <th scope="col" width="10%">Published</th>
-		  <?php if(isset($highlight) && strcasecmp($highlight,'edit') == 0){echo'<th scope="col"  width="10%" class="highlight">Edit</th>'."\r\n";}else{echo'<th scope="col" width="10%">Edit</th>';}?>
-		  <?php if(isset($highlight) && strcasecmp($highlight,'delete') == 0){echo'<th scope="col"  width="10%" class="highlight">Delete</th>';}else{echo'<th scope="col" width="10%">Delete</th>';}?>
+		  <th scope="col" width="12%">Author</th>
+		  <th scope="col" width="28%">Date</th>
+		  <th scope="col" width="8%">Published</th>
+		  <?php if(isset($highlight) && strcasecmp($highlight,'edit') == 0){echo'<th scope="col"  width="8%" class="highlight">Edit</th>'."\r\n";}else{echo'<th scope="col" width="10%">Edit</th>';}?>
+		  <?php if(isset($highlight) && strcasecmp($highlight,'delete') == 0){echo'<th scope="col"  width="8%" class="highlight">Delete</th>';}else{echo'<th scope="col" width="10%">Delete</th>';}?>
         </tr>
 		<?php foreach($news_articles as $item):?>
 				<tr>

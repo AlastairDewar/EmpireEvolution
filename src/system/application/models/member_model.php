@@ -91,18 +91,6 @@ class Member_model extends Model
 	$this->db->query($sql);
   }
 
-  function unique_username($username){
-	$query = $this->db->query('SELECT * FROM `player` WHERE `username` = "'.$username.'" LIMIT 1;');
-	if ($query->num_rows() > 0){return FALSE;}else{
-	return TRUE;}
-  }  
-
-  function unique_email($email){
-	$query = $this->db->query('SELECT * FROM `player` WHERE `email` = "'.$email.'" LIMIT 1;');
-	if ($query->num_rows() > 0){return FALSE;}else{
-	return TRUE;}
-  }
-
   function get_uid_from_username($username){
 	$query = $this->db->query('SELECT `uid` FROM `player` WHERE `username` = "'.$username.'" LIMIT 1;');
 	$row = $query->row_array();

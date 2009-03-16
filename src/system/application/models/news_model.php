@@ -40,21 +40,64 @@ class News_model extends Model
 	if(isset($published)){
 	$this->twitter->update($this->Member_model->get_username($this->Member_model->get_uid()).' has edited and updated the news article entitled "'.$title.'"');}
   }  
-  function get_article($uid)
+  function delete($uid)
+  {
+	$sql = 'UPDATE news_articles SET deleted = 1, published = 0 WHERE uid = '.$uid.' LIMIT 1;';
+	$this->db->query($sql);
+	$sql = 'SELECT * FROM news_articles WHERE uid = '.$uid.' LIMIT 1;';
+	$query = $this->db->query($sql);
+	$title = $query->result_array();
+	$title = $title[0]['title'];
+	$this->log('has deleted the news article entitled '.$title);
+  }
+  function is_public($uid)
+  {
+    $sql = 'SELECT * FROM news_articles WHERE uid = '.$uid.';';
+	$query = $this->db->query($sql);
+	if($query->num_rows() == 1){
+		$data = $query->result_array();
+		if($data['published'] == 0){return FALSE;}else{
+			if($data['deleted'] == 1){return FALSE;}else{return TRUE;}}
+	}else{return FALSE;}
+  }
+  function article_exists($uid)
+  {
+  	$sql = 'SELECT * FROM news_articles WHERE uid = '.$uid.';';
+	$query = $this->db->query($sql);
+	if($query->num_rows() == 1){return TRUE;}else{return FALSE;}
+  }
+  function get_latest_articles($numOfArticles = 3)
+  {
+		$articles = array();
+		$query = $this->db->query('SELECT * FROM `news_articles` WHERE published = 1 ORDER BY UID DESC LIMIT 3;');
+		foreach ($query->result_array() as $row)
+		{
+			array_push($articles, $row);
+		}
+		return $articles;
+  }
+  function get_article($uid, $published_only = TRUE)
   {
   		$article = array();
-		$query = $this->db->query('SELECT * FROM `news_articles` WHERE uid = '.$uid.' LIMIT 1;');
+		if($published_only == TRUE){
+		$query = $this->db->query('SELECT * FROM `news_articles` WHERE uid = '.$uid.' AND deleted = 0 AND published = 1 LIMIT 1;');}
+		else{
+		$query = $this->db->query('SELECT * FROM `news_articles` WHERE deleted = 0 AND uid = '.$uid.' LIMIT 1;');}
+		if($this->query->num_rows() == 1){
 		$db_article = $query->result_array();
 		$db_article = $db_article[0];
 		if($db_article['published'] == 1){$db_article['published'] = "1 checked=\"checked\"";}
 		elseif($db_article['published'] == 0){$db_article['published'] = "";}
 		$article = $db_article;
-		return $article;
+		return $article;}else{return null;}
   }
-  function get_all_articles()
+  function get_all_articles($published_only = true)
   {
 		$articles = array();
-		$query = $this->db->query('SELECT * FROM `news_articles` ORDER BY uid  DESC;');
+		if($published_only == TRUE){
+			$query = $this->db->query('SELECT * FROM `news_articles` WHERE published = 1 AND deleted = 0 ORDER BY uid  DESC;');}
+		else{
+			$query = $this->db->query('SELECT * FROM `news_articles` WHERE deleted = 0 ORDER BY uid  DESC;');}
 		foreach ($query->result_array() as $row){
 		array_push($articles, $row);}
 		foreach ($articles as &$news_article) {
@@ -64,10 +107,10 @@ class News_model extends Model
 		$news_article['date'] = date('l jS F',$news_article['date'])."<br/>".date('H:i A',$news_article['date']);
 		if($news_article['published'] == 1){$news_article['published'] = '<img src="'.base_url().'images/tick.png" class="center" alt="Published" width="16px" height="16px"/>';$news_article['published'] = anchor('news/unpublish/', $news_article['published']);}
 			else{$news_article['published'] = '<img src="'.base_url().'images/cross.png" class="center" alt="Unpublished" width="16px" height="16px"/>';$news_article['published'] = anchor('news/publish/', $news_article['published']);}
-$news_article['edit'] = '<img src="'.base_url().'images/pencil.png" class="center" alt="Edit" width="16px" height="16px"/>';
-$news_article['edit'] = anchor('news/edit/'.$news_article['uid'], $news_article['edit']);
-$news_article['delete'] = '<img src="'.base_url().'images/delete.png" class="center" alt="Delete" width="16px" height="16px"/>';
-$news_article['delete'] = anchor('news/delete/'.$news_article['uid'], $news_article['delete']);
+			$news_article['edit'] = '<img src="'.base_url().'images/pencil.png" class="center" alt="Edit" width="16px" height="16px"/>';
+			$news_article['edit'] = anchor('news/edit/'.$news_article['uid'], $news_article['edit']);
+			$news_article['delete'] = '<img src="'.base_url().'images/delete.png" class="center" alt="Delete" width="16px" height="16px"/>';
+			$news_article['delete'] = anchor('news/delete/'.$news_article['uid'], $news_article['delete']);
 		}
 		return $articles;
   }

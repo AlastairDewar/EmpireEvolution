@@ -13,6 +13,10 @@ class Mobile extends Controller {
 		{
 			$this->load->view('mobile');
 		}
+		else
+		{
+			redirect('');
+		}
 	}
 	
 }

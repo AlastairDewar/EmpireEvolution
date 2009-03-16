@@ -6,11 +6,11 @@ class Building extends Controller {
   {
 	parent::Controller();
 	$this->load->model('Building_model');
-		$this->load->library('user_agent');
-		if (!$this->agent->is_mobile())
-		{
-			redirect('mobile');
-		}
+	$this->load->library('user_agent');
+	if ($this->agent->is_mobile())
+	{
+		redirect('mobile');
+	}
   }
 
   function index()

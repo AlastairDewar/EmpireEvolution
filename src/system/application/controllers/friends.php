@@ -7,7 +7,7 @@ class Friends extends Controller {
 		$this->load->library('parser');
 		$this->load->model('Friends_model');
 		$this->load->library('user_agent');
-		if (!$this->agent->is_mobile())
+		if ($this->agent->is_mobile())
 		{
 			redirect('mobile');
 		}

@@ -6,7 +6,7 @@ class Welcome extends Controller {
 	{
 		parent::Controller();	
 		$this->load->library('user_agent');
-		if (!$this->agent->is_mobile())
+		if ($this->agent->is_mobile())
 		{
 			redirect('mobile');
 		}

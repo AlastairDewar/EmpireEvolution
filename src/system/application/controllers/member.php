@@ -4,6 +4,11 @@ class Member extends Controller {
 	function Member()
 	{
 		parent::Controller();
+		$this->load->library('user_agent');
+		if ($this->agent->is_mobile())
+		{
+			redirect('mobile');
+		}
 	}
 
 	function index()
@@ -145,10 +150,10 @@ class Member extends Controller {
 			$this->load->helper(array('form', 'url'));
 			$this->load->library('form_validation');
 			$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
-			$this->form_validation->set_rules('username', 'Username', 'required|min_length[5]|max_length[12]|alpha_dash|trim|xss_clean|callback_restricted_usernames');
+			$this->form_validation->set_rules('username', 'Username', 'required|min_length[5]|max_length[12]|alpha_dash|trim|xss_clean|unique[player.username]|callback_restricted_usernames');
 			$this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_lenth[32]|alpha_dash|xss_clean|matches[passconf]');
 			$this->form_validation->set_rules('passconf', 'Password Confirmation', 'required');
-			$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|xss_clean|callback_restricted_emails');
+			$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|xss_clean|unique[player.email]|callback_restricted_emails');
 			// TODO http://codeigniter.com/forums/viewthread/94299/
 			if ($this->form_validation->run() == FALSE)
 			{
@@ -212,15 +217,7 @@ class Member extends Controller {
 			}
 			else
 			{
-				if($this->Member_model->unique_username($str) === FALSE)
-				{
-					$this->form_validation->set_message('restricted_usernames', 'The %s you supplied is already in use');
-					return FALSE;
-				}
-				else
-				{
-					return TRUE;
-				}
+				return TRUE;
 			}
 		}
 	}
@@ -236,15 +233,7 @@ class Member extends Controller {
 				return FALSE;
 			}
 		}
-		if($this->Member_model->unique_email($str) === FALSE)
-		{	
-			$this->form_validation->set_message('restricted_emails', 'The %s you supplied is already in use');
-			return FALSE;
-		}
-		else
-		{
 			return TRUE;
-		}
 	}
 }
 
