@@ -82,9 +82,10 @@
       	<li><?php echo anchor('news/overview/', 'View all articles'); ?></li>
 	<li><?php echo anchor('news/add/', 'Add a new article'); ?></li>
       	<li><?php echo anchor('news/edit/', 'Edit an article'); ?></li>
+	<li><?php echo anchor('news/publication/', 'Publish or unpublish an article'); ?></li>
       	<li><?php echo anchor('news/delete/', 'Delete an article'); ?></li>
     </ul>
-	<p>Remember, there are links next to each article on the left hand side under the "<strong>Whats been going on?</strong>" section.</p>
+	<p>Remember, there are links next to each article on the left hand side under the "<strong>What articles are there?</strong>" section.</p>
   </div>
       <br class="clear" />
   <div id="footer"> </div>
