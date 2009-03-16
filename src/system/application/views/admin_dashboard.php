@@ -25,6 +25,7 @@
 		<?php //echo validation_errors(); ?>
 		<?php //echo form_open('admin/notes'); ?>
 	<textarea cols="73" rows="15"></textarea>
+	<input type="submit" name="save_notes" value="Save notes"/>
       <br class="clear" />
 	  <p class="center"><strong>All</strong> actions are logged, backed up and reviewed regularly. All misconduct is duely noted.</p>
   </div>
@@ -33,6 +34,7 @@
     <p>Here are some related links you might be interested in:</p>
     <ul>
       <li><?php echo anchor('admin/view_logs/', 'View all logs'); ?></li>
+      <li><?php echo anchor('admin/view_stats/', 'View the statistics'); ?></li>
     </ul>
   </div>
       <br class="clear" />

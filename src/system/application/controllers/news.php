@@ -200,7 +200,7 @@ class News extends Controller
 					if ($this->recaptcha->is_valid) {
 					return TRUE;
 					} else {
-					$this->validation->set_message(‘check_captcha’,‘Incorrect Security Image Response’);
+					$this->validation->set_message('check_captcha','Incorrect Security Image Response');
 					return FALSE;}
 					}
 					$this->_post_comment($comment);
