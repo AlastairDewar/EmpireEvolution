@@ -32,8 +32,12 @@
 		  <textarea name="article" id="article" class="medium" rows="10"><?php echo set_value('article'); ?></textarea>
 		  <span>The main content of the news article.</span>			
 
-		  <label for="publish">Do you want for this article to be published immediately?</label>
+		  <label for="publish">Do you want for this article to be published on the website immediately?</label>
 		  <?php echo form_checkbox('publish', 'accept', TRUE); ?>
+		  
+		  <label for="publish">Do you want for this article to be published on twitter?</label>
+		  <?php echo form_checkbox('tweet', 'accept', TRUE); ?>
+		  
 			<div><input type="submit" value="Submit"  class="submit"/></div>
 			</form>
       <br class="clear" />		  
@@ -43,10 +47,12 @@
     <h2>News</h2>
     <p>Here are some related links you might be interested in:</p>
     <ul>
-      <li><?php echo anchor('news/overview/', 'View all articles'); ?></li>
-	  <li><?php echo anchor('news/add/', 'Add a new article'); ?></li>
-      <li><?php echo anchor('news/edit/', 'Edit an article'); ?></li>
-      <li><?php echo anchor('news/delete/', 'Delete an article'); ?></li>
+      	<li><?php echo anchor('news/overview/', 'View all articles'); ?></li>
+	<li><?php echo anchor('news/add/', 'Add a new article'); ?></li>
+      	<li><?php echo anchor('news/edit/', 'Edit an article'); ?></li>
+	<li><?php echo anchor('news/publication/', 'Publish or unpublish an article'); ?></li>
+      	<li><?php echo anchor('news/delete/', 'Delete an article'); ?></li>
+	<li><?php echo anchor('news/tweet/', 'Tweet about something'); ?></li>
     </ul>
 	<p>Remember, there are links next to each article on the left hand side under the "<strong>Whats been going on?</strong>" section.</p>
   </div>

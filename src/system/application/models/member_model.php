@@ -25,8 +25,8 @@ class Member_model extends Model
 		$row = $query->row_array();
 		$currentLog = array();
 		$currentLog['event'] = $row['player_uid'].'#'.$row['event'];
-		$currentLog['date'] = $row['date'];
-		$currentLog['flagged'] = $row['flagged'];
+		$currentLog['date'] = date('l jS F',$row['date'])."<br/>".date('H:i A',$row['date']);
+		if($row['flagged'] == 1){$currentLog['flagged'] = '<img src="'.base_url().'images/cross.png" class="center" alt="Flagged" width="16px" height="16px"/>';}else{$currentLog['flagged'] = null;}
 		array_push($logs,$currentLog);}
 		foreach ($logs as &$log) {
 			$user_uid = substr($log['event'],0,strpos($log['event'], '#'));

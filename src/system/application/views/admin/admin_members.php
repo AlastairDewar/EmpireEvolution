@@ -21,11 +21,11 @@
     <p>Welcome {username} to the admin members dashboard.</p>
     <div class="break"></div>
     <h1>Whats been going on? <?php echo anchor('feed/admin_members', '<img src="'.base_url().'images/rss.png" alt="RSS Feed" width="16px" height="16px"/>');?></h1>
-      <table width="610px" border="0" cellspacing="0" cellpadding="0">
+	  <table width="610px" border="0" cellspacing="0" cellpadding="0">
         <tr class="table_header">
 			<th scope="col">Event</th>
 			<th scope="col">Date</th>
-			<th scope="col">Flagged</th>
+			<th scope="col" width="10%">Flagged</th>
 	  </tr>
 		<?php foreach($member_logs as $item):?>
 				<tr>

@@ -40,6 +40,33 @@ class News extends Controller
 	$template_data = $this->News_model->get_all_articles();
 	$this->parser->parse('news_archive', $template_data);
   }
+  function tweet()
+  {
+		if($this->Member_model->logged_in())
+		{		
+			if($this->Member_model->is_administrator())
+			{
+				$this->load->helper(array('form', 'url'));
+				$this->load->library('form_validation');
+				$this->form_validation->set_error_delimiters('<div class="error">', '</div>');
+				$this->form_validation->set_rules('content', 'Content', 'required|max_length[140]');
+				if ($this->form_validation->run() == FALSE)
+				{
+					$this->load->model('News_model');
+					$template_data = array();
+					$template_data['username'] = $this->Member_model->get_username();
+					$this->parser->parse('tweet', $template_data);
+				}
+				else
+				{
+					$this->News_model->tweet();
+					$template_data = array();
+					$template_data['username'] = $this->Member_model->get_username();
+					$this->parser->parse('tweet_success', $template_data);
+				}
+			}else{redirect('insufficient_rights','refresh');}
+		}else{redirect('/member/login','refresh');}
+  }
   function add()
   {
 		if($this->Member_model->logged_in())

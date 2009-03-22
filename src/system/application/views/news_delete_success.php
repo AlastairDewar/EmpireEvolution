@@ -28,10 +28,12 @@
     <h2>News</h2>
     <p>Here are some related links you might be interested in:</p>
     <ul>
-      <li><?php echo anchor('news/overview/', 'View all articles'); ?></li>
-	  <li><?php echo anchor('news/add/', 'Add a new article'); ?></li>
-      <li><?php echo anchor('news/edit/', 'Edit an article'); ?></li>
-      <li><?php echo anchor('news/delete/', 'Delete an article'); ?></li>
+      	<li><?php echo anchor('news/overview/', 'View all articles'); ?></li>
+	<li><?php echo anchor('news/add/', 'Add a new article'); ?></li>
+      	<li><?php echo anchor('news/edit/', 'Edit an article'); ?></li>
+	<li><?php echo anchor('news/publication/', 'Publish or unpublish an article'); ?></li>
+      	<li><?php echo anchor('news/delete/', 'Delete an article'); ?></li>
+	<li><?php echo anchor('news/tweet/', 'Tweet about something'); ?></li>
     </ul>
 	<p>Remember, there are links next to each article on the left hand side under the "<strong>Whats been going on?</strong>" section.</p>
   </div>

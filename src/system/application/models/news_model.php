@@ -12,6 +12,15 @@ class News_model extends Model
 	$this->db->query($sql);
   }
   
+  function tweet()
+  {
+  	$content = $this->input->post('content');
+	$this->log('added a new tweet');
+	$this->load->library('twitter');
+	$this->twitter->auth('empev','21d9TCtN');
+	$this->twitter->update($content);
+  }
+  
   function add()
   {
   	$title = $this->input->post('title');
