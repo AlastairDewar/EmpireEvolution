@@ -15,8 +15,8 @@ svn commit ~/Projects/Empire\ Evolution/ -m "$MESSAGE" -q
 echo "Submitting to Git Repository ..."
 
 git svn fetch -q
-git add . -q
+git add .
 git commit -m "$MESSAGE" -a -q
-git push -q
+git push
 
 echo "Empire Evolution repositories have been successfully updated."
