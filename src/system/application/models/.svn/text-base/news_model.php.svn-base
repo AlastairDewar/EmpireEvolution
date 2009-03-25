@@ -104,9 +104,9 @@ class News_model extends Model
   {
 		$articles = array();
 		if($published_only == TRUE){
-			$query = $this->db->query('SELECT * FROM `news_articles` WHERE published = 1 AND deleted = 0 ORDER BY uid  DESC;');}
+			$query = $this->db->query('SELECT * FROM `news_articles` WHERE published = 1 AND deleted = 0 ORDER BY uid  DESC LIMIT 10;');}
 		else{
-			$query = $this->db->query('SELECT * FROM `news_articles` WHERE deleted = 0 ORDER BY uid  DESC;');}
+			$query = $this->db->query('SELECT * FROM `news_articles` WHERE deleted = 0 ORDER BY uid  DESC LIMIT 10;');}
 		foreach ($query->result_array() as $row){
 		array_push($articles, $row);}
 		foreach ($articles as &$news_article) {
@@ -114,12 +114,12 @@ class News_model extends Model
 		$username = $this->Member_model->get_username($user_uid);
 		$news_article['author'] = $username;
 		$news_article['date'] = date('l jS F',$news_article['date'])."<br/>".date('H:i A',$news_article['date']);
-		if($news_article['published'] == 1){$news_article['published'] = '<img src="'.base_url().'images/tick.png" class="center" alt="Published" width="16px" height="16px"/>';$news_article['published'] = anchor('news/unpublish/', $news_article['published']);}
-			else{$news_article['published'] = '<img src="'.base_url().'images/cross.png" class="center" alt="Unpublished" width="16px" height="16px"/>';$news_article['published'] = anchor('news/publish/', $news_article['published']);}
+		if($news_article['published'] == 1){$news_article['published'] = '<img src="'.base_url().'images/tick.png" class="center" alt="Published" width="16px" height="16px"/>';$news_article['published'] = anchor('news/edit_article_publication/', $news_article['published']);}
+			else{$news_article['published'] = '<img src="'.base_url().'images/cross.png" class="center" alt="Unpublished" width="16px" height="16px"/>';$news_article['published'] = anchor('news/edit_article_publication/', $news_article['published']);}
 			$news_article['edit'] = '<img src="'.base_url().'images/pencil.png" class="center" alt="Edit" width="16px" height="16px"/>';
-			$news_article['edit'] = anchor('news/edit/'.$news_article['uid'], $news_article['edit']);
+			$news_article['edit'] = anchor('news/edit_article/'.$news_article['uid'], $news_article['edit']);
 			$news_article['delete'] = '<img src="'.base_url().'images/delete.png" class="center" alt="Delete" width="16px" height="16px"/>';
-			$news_article['delete'] = anchor('news/delete/'.$news_article['uid'], $news_article['delete']);
+			$news_article['delete'] = anchor('news/delete_article/'.$news_article['uid'], $news_article['delete']);
 		}
 		return $articles;
   }
@@ -142,6 +142,7 @@ class News_model extends Model
 			$message = substr($log['event'],strpos($log['event'],'#')+1);
 		$username = $this->Member_model->get_username($user_uid);
 		$log['event'] = '<strong>'.$username.'</strong> '.$message;
+		$log['event'] = $log['event'].'';
 		$log['date'] = date('l jS F ', $log['date'])."<br/>".date(' h:i A', $log['date']);
 			if($log['flagged'] == 1){$log['flagged'] = '<img src="'.base_url().'images/flag_red.png" alt="Reported" width="16px" height="16px"/>';}else{$log['flagged'] = null;}
 		}

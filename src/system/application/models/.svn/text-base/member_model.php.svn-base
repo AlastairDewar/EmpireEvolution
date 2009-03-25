@@ -135,5 +135,29 @@ class Member_model extends Model
     $query = $this->db->query("SELECT * FROM player WHERE rights = '-1'");
     return $query;
   }
+
+  function get_all_members()
+  {
+		$members = array(); $members_extra = array('24' => array('age' => '<i>null</i>', 'wlm' => '<i>null</i>'), '1' => array('age' => '<i>null</i>', 'wlm' => 'alastair_dewar@msn.com'));
+		$query = $this->db->query('SELECT * FROM `player` ORDER BY uid  DESC LIMIT 10;');
+		foreach ($query->result_array() as $row){
+		array_push($members, $row);}
+
+		foreach ($members as &$member) {
+			if($member['rights'] == 0){$member['rights'] = 'Player';}
+			if($member['rights'] == 1){$member['rights'] = 'Moderator';}
+			if($member['rights'] == 2){$member['rights'] = 'Administrator';}
+			$member['password'] = null;
+			$member['extra'] = '<strong>Email</strong> '.$member['email'];
+			if(isset($members_extra[$member['uid']])){$member['extra'] = $member['extra'].'&nbsp;&nbsp;&nbsp;<strong>Age</strong> '.$members_extra[$member['uid']]['age'];}
+			if(isset($members_extra[$member['uid']])){$member['extra'] = $member['extra'].'&nbsp;&nbsp;&nbsp;<strong>WLM</strong> '.$members_extra[$member['uid']]['wlm'];}
+			$member['edit'] = '<img src="'.base_url().'images/pencil.png" class="center" alt="Edit" width="16px" height="16px"/>';
+			$member['edit'] = anchor('news/edit_article/'.$member['uid'], $member['edit']);
+			$member['delete'] = '<img src="'.base_url().'images/delete.png" class="center" alt="Delete" width="16px" height="16px"/>';
+			$member['delete'] = anchor('news/delete_article/'.$member['uid'], $member['delete']);
+		}
+		return $members;
+  }
+
 }
 ?>

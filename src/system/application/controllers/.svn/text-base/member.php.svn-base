@@ -15,7 +15,8 @@ class Member extends Controller {
 	{
 		if($this->Member_model->logged_in())
 		{
-			redirect('/member/panel', 'refresh');
+			//redirect('/member/dashboard', 'refresh');
+			$this->dashboard();
 		}
 		else
 		{
@@ -63,13 +64,13 @@ class Member extends Controller {
 			$this->parser->parse('member_profile', $template_data);}
 	}
 
-	function panel()
+	function dashboard()
 	{
 		if($this->Member_model->logged_in())
 		{			
 			$template_data = array();
-    		$template_data['username'] = $this->Member_model->get_username();
-			$this->parser->parse('member_panel', $template_data);
+    			$template_data['username'] = $this->Member_model->get_username();
+			$this->parser->parse('members/user_dashboard', $template_data);
 			$this->Member_model->update_activity();
 		}
 		else
@@ -81,7 +82,7 @@ class Member extends Controller {
 	function confirm($code)
 	{
 		$this->Member_model->confirm($uid, $code);
-		$this->load->view('member_confirmation_success');
+		$this->load->view('members/confirmation_success');
 	}
 	
 	function logout()
@@ -94,7 +95,7 @@ class Member extends Controller {
 			$this->form_validation->set_rules('uid', 'UID', 'required|min_length[1]|max_length[11]|numeric');
 			if ($this->form_validation->run() == FALSE)
 			{
-				$this->load->view('member_logout');
+				$this->load->view('members/logout');
 			}
 			else
 			{
@@ -119,7 +120,7 @@ class Member extends Controller {
 			$this->form_validation->set_rules('password', 'Password', 'required|min_length[6]|max_lenth[32]|alpha_dash|callback_login_check');
 			if ($this->form_validation->run() == FALSE)
 			{
-				$this->load->view('member_login');
+				$this->load->view('members/login');
 			}
 			else
 			{
@@ -129,18 +130,36 @@ class Member extends Controller {
 				$this->session->set_userdata($newdata);
 				if($this->Member_model->last_login() == 0)
 				{
-					$this->load->view('member_init_login');
+					$this->load->view('members/initial_login');
 				}
 				else
 				{
-					redirect('/member/panel','refresh');
+					redirect('/member/dashboard','refresh');
 				}
 			}
 		}
 		else
 		{
-			redirect('/member/panel','refresh');
+			redirect('/member/dashboard','refresh');
 		}
+	}
+
+	function add_member(){}
+	function edit_account(){}
+	function delete_account(){}
+	function overview()
+	{
+		if($this->Member_model->logged_in())
+		{		
+			if($this->Member_model->is_administrator())
+			{
+				$template_data = array();
+				$template_data['username'] = $this->Member_model->get_username();
+				$template_data['members'] = $this->Member_model->get_all_members();
+				$template_data['highlight'] = $this->uri->segment(3);
+				$this->parser->parse('members/overview', $template_data);
+			}else{redirect('error/insufficient_rights','refresh');}
+		}else{redirect('/member/login','refresh');}
 	}
 
 	function register()
@@ -157,7 +176,7 @@ class Member extends Controller {
 			// TODO http://codeigniter.com/forums/viewthread/94299/
 			if ($this->form_validation->run() == FALSE)
 			{
-				$this->load->view('member_register');
+				$this->load->view('members/register');
 			}
 			else
 			{
@@ -173,16 +192,16 @@ class Member extends Controller {
 				  $this->email->subject('Empire Evolution Registration');
 				  $message = "Thank you for registering at Empire Evolution\r\n\r\n";
 				  $message .= "Your account requires activation. It can be activivated by visitng the following link.\r\n";
-				  $message .= "<a href=\"".site_url()."/member/confirm/".$code."\">".site_url()."/member/confirm/".$code."\"</a>\r\n\r\n";
+				  $message .= "<a href=\"".site_url()."/member/confirm/".$code."\">".site_url()."/members/confirm/".$code."\"</a>\r\n\r\n";
 				  $message .= "If you recieved this email in error please let a member of staff know by emailing <a href=\"mailto:Admin@alastairdewar.co.uk\">Admin@alastairdewar.co.uk</a>";
 				  $this->email->message($message);
 				  $this->email->send();
-				$this->load->view('member_register_success');
+				$this->load->view('members/register_success');
 			}
 		}
 		else
 		{				
-			redirect('/member/panel','refresh');
+			redirect('/member/dashboard','refresh');
 		}		
 	}
 

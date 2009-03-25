@@ -16,6 +16,12 @@ class News extends Controller
   {
 	$this->latest_articles();	
   }
+
+  function edit_article_publication()
+  {
+
+  }	
+
   function view($uid)
   {
 		if($uid != 0 && is_int($uid))
@@ -33,12 +39,12 @@ class News extends Controller
   {
 	$template_data = $this->News_model->get_latest_articles(3);
 	// TODO format the template data in News_model
-	$this->parser->parse('news_main', $template_data);
+	$this->parser->parse('news/overview', $template_data);
   }
   function archive()
   {
 	$template_data = $this->News_model->get_all_articles();
-	$this->parser->parse('news_archive', $template_data);
+	$this->parser->parse('news/archive', $template_data);
   }
   function tweet()
   {
@@ -55,19 +61,19 @@ class News extends Controller
 					$this->load->model('News_model');
 					$template_data = array();
 					$template_data['username'] = $this->Member_model->get_username();
-					$this->parser->parse('tweet', $template_data);
+					$this->parser->parse('news/tweet', $template_data);
 				}
 				else
 				{
 					$this->News_model->tweet();
 					$template_data = array();
 					$template_data['username'] = $this->Member_model->get_username();
-					$this->parser->parse('tweet_success', $template_data);
+					$this->parser->parse('news/tweet_success', $template_data);
 				}
-			}else{redirect('insufficient_rights','refresh');}
+			}else{redirect('error/insufficient_rights','refresh');}
 		}else{redirect('/member/login','refresh');}
   }
-  function add()
+  function add_article()
   {
 		if($this->Member_model->logged_in())
 		{		
@@ -83,17 +89,17 @@ class News extends Controller
 					$this->load->model('News_model');
 					$template_data = array();
 					$template_data['username'] = $this->Member_model->get_username();
-					$this->parser->parse('news_add', $template_data);
+					$this->parser->parse('news/add_article', $template_data);
 				}
 				else
 				{
 					$this->News_model->add();
-					$this->load->view('news_add_success');
+					$this->load->view('news/add_article_success');
 				}
-			}else{redirect('insufficient_rights','refresh');}
+			}else{redirect('error/insufficient_rights','refresh');}
 		}else{redirect('/member/login','refresh');}
   }
-  function edit($uid = 0)
+  function edit_article($uid = 0)
   {
 		if($this->Member_model->logged_in())
 		{		
@@ -114,21 +120,21 @@ class News extends Controller
 							$template_data = array();
 							$template_data = $this->News_model->get_article($uid);
 							$template_data['username'] = $this->Member_model->get_username();
-							$this->parser->parse('news_edit', $template_data);
+							$this->parser->parse('news/edit_article', $template_data);
 						}
 						else
 						{
 							$this->News_model->edit($uid);
 							$template_data = array();
 							$template_data['username'] = $this->Member_model->get_username();
-							$this->parser->parse('news_edit_success', $template_data);
+							$this->parser->parse('news/edit_article_success', $template_data);
 						}
 					}
 				}else{redirect('news/overview/edit','refresh');}
-			}else{redirect('insufficient_rights','refresh');}
+			}else{redirect('error/insufficient_rights','refresh');}
 		}else{redirect('/member/login','refresh');}
   }
-  function delete($uid = 0)
+  function delete_article($uid = 0)
   {
 	if($this->Member_model->logged_in()){
 		if($this->Member_model->is_administrator()){
@@ -143,16 +149,16 @@ class News extends Controller
 						$this->form_validation->set_rules('uid', 'Player Unique Identifer', 'required');
 						if ($this->form_validation->run() == FALSE)
 						{
-							$this->parser->parse('news_delete',$template_data);
+							$this->parser->parse('news/delete_article',$template_data);
 						}
 						else
 						{
 							$this->News_model->delete($uid);
-							$this->parser->parse('news_delete_success',$template_data);
+							$this->parser->parse('news/delete_article_success',$template_data);
 						}
-					}else{redirect('news/invalid','refresh');}
+					}else{redirect('error/invalid_news_id','refresh');}
 			}else{redirect('news/overview/delete','refresh');}
-		}else{redirect('member/panel','refresh');}
+		}else{redirect('error/insufficient_rights','refresh');}
 	}else{redirect('member/login','refresh');}
   }  function overview()
   {
@@ -165,8 +171,8 @@ class News extends Controller
 				$template_data['username'] = $this->Member_model->get_username();
 				$template_data['news_articles'] = $this->News_model->get_all_articles(FALSE);
 				$template_data['highlight'] = $this->uri->segment(3);
-				$this->parser->parse('news_overview', $template_data);
-			}else{redirect('insufficient_rights','refresh');}
+				$this->parser->parse('news/overview', $template_data);
+			}else{redirect('error/sinsufficient_rights','refresh');}
 		}else{redirect('/member/login','refresh');}
   }
   function add_comment()
@@ -212,18 +218,18 @@ class News extends Controller
 				}
 				else
 				{
-					$this->load->library(‘recaptcha’);
+					$this->load->library("recaptcha");
 					$data = array(
-					‘captcha’ => $this->recaptcha->recaptcha_get_html()
+					"captcha" => $this->recaptcha->recaptcha_get_html()
 					);
 					// Add the following to regular form validation Rules
 					$rules = array(
-					‘recaptcha_response_field’=>‘required|callback_check_captcha’
+					"recaptcha_response_field"=>"required|callback_check_captcha"
 					);
 					$this->validation->set_rules($rules);
 					// Function to check to see if captcha is correctly submitted
 					function check_captcha($val) {
-					$this->recaptcha->recaptcha_check_answer($_SERVER["REMOTE_ADDR"],$this->input->post(‘recaptcha_challenge_field’),$val);
+					$this->recaptcha->recaptcha_check_answer($_SERVER["REMOTE_ADDR"],$this->input->post("recaptcha_challenge_field"),$val);
 					if ($this->recaptcha->is_valid) {
 					return TRUE;
 					} else {

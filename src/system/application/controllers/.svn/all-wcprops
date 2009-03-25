@@ -31,7 +31,7 @@ news.php
 K 25
 svn:wc:ra_dav:version-url
 V 79
-/source/empireevolution/!svn/ver/26/src/system/application/controllers/news.php
+/source/empireevolution/!svn/ver/28/src/system/application/controllers/news.php
 END
 building.php
 K 25
@@ -61,7 +61,7 @@ member.php
 K 25
 svn:wc:ra_dav:version-url
 V 81
-/source/empireevolution/!svn/ver/21/src/system/application/controllers/member.php
+/source/empireevolution/!svn/ver/28/src/system/application/controllers/member.php
 END
 mobile.php
 K 25
@@ -73,5 +73,5 @@ admin.php
 K 25
 svn:wc:ra_dav:version-url
 V 80
-/source/empireevolution/!svn/ver/23/src/system/application/controllers/admin.php
+/source/empireevolution/!svn/ver/28/src/system/application/controllers/admin.php
 END

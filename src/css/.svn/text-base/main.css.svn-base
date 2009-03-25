@@ -81,3 +81,9 @@ ul#navigation li{
 display:inline;
 padding-right: 15px;
 }
+
+#logout {
+float:right;
+position:relative;
+top:-15px;
+}

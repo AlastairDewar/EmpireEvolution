@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/source/empireevolution/!svn/ver/28/src/system/application/views/members
+END
+logout.php
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/source/empireevolution/!svn/ver/28/src/system/application/views/members/logout.php
+END
+member_register.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/source/empireevolution/!svn/ver/28/src/system/application/views/members/member_register.php
+END
+register_success.php
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/source/empireevolution/!svn/ver/28/src/system/application/views/members/register_success.php
+END
+confirmation_success.php
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/source/empireevolution/!svn/ver/28/src/system/application/views/members/confirmation_success.php
+END
+profile.php
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/source/empireevolution/!svn/ver/28/src/system/application/views/members/profile.php
+END
+initial_login.php
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/source/empireevolution/!svn/ver/28/src/system/application/views/members/initial_login.php
+END
+view_all.php
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/source/empireevolution/!svn/ver/28/src/system/application/views/members/view_all.php
+END
+register.php
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/source/empireevolution/!svn/ver/28/src/system/application/views/members/register.php
+END
+user_dashboard.php
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/source/empireevolution/!svn/ver/28/src/system/application/views/members/user_dashboard.php
+END
+dashboard.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/source/empireevolution/!svn/ver/28/src/system/application/views/members/dashboard.php
+END
+login.php
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/source/empireevolution/!svn/ver/28/src/system/application/views/members/login.php
+END

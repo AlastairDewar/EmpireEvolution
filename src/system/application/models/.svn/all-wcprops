@@ -25,7 +25,7 @@ news_model.php
 K 25
 svn:wc:ra_dav:version-url
 V 80
-/source/empireevolution/!svn/ver/26/src/system/application/models/news_model.php
+/source/empireevolution/!svn/ver/28/src/system/application/models/news_model.php
 END
 building_model.php
 K 25
@@ -43,7 +43,7 @@ member_model.php
 K 25
 svn:wc:ra_dav:version-url
 V 82
-/source/empireevolution/!svn/ver/26/src/system/application/models/member_model.php
+/source/empireevolution/!svn/ver/28/src/system/application/models/member_model.php
 END
 admin_model.php
 K 25
