@@ -5,6 +5,7 @@ MESSAGE=$1
 if [ "$MESSAGE" = "" ]; then
   # Show help and exit
   echo "Please enter the commit message"
+  exit
 fi
 
 echo "Submitting to SVN Repository ..."
