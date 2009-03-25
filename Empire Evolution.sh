@@ -15,7 +15,7 @@ echo "Submitting to Git Repository ..."
 
 git svn fetch
 git add .
-git commit -m "$MESSAGE"
-git push origin master
+git commit -m "$MESSAGE" -a
+git push
 
 echo "Empire Evolution repositories have been successfully updated."
