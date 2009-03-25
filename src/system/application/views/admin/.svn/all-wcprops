@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/source/empireevolution/!svn/ver/26/src/system/application/views/admin
+END
+admin_logs.php
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/source/empireevolution/!svn/ver/23/src/system/application/views/admin/admin_logs.php
+END
+admin_dashboard.php
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/source/empireevolution/!svn/ver/23/src/system/application/views/admin/admin_dashboard.php
+END
+admin_members.php
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/source/empireevolution/!svn/ver/26/src/system/application/views/admin/admin_members.php
+END
+admin_news.php
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/source/empireevolution/!svn/ver/26/src/system/application/views/admin/admin_news.php
+END
+admin_research.php
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/source/empireevolution/!svn/ver/23/src/system/application/views/admin/admin_research.php
+END
+admin_buildings.php
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/source/empireevolution/!svn/ver/23/src/system/application/views/admin/admin_buildings.php
+END

@@ -1,0 +1,68 @@
+9
+
+dir
+26
+https://alastairdewar.springloops.com/source/empireevolution/src/system
+https://alastairdewar.springloops.com/source/empireevolution
+
+
+
+2009-03-22T22:34:25.433066Z
+26
+alastairdewar
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+45cdab22-f4fb-11dc-9803-a50cd1b8bf1e
+
+
+
+
+
+
+0
+
+scaffolding
+dir
+
+plugins
+dir
+
+helpers
+dir
+
+cache
+dir
+
+language
+dir
+
+application
+dir
+
+logs
+dir
+
+database
+dir
+
+fonts
+dir
+
+libraries
+dir
+
+codeigniter
+dir
+

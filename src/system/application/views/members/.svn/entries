@@ -1,0 +1,93 @@
+9
+
+dir
+0
+https://alastairdewar.springloops.com/source/empireevolution/src/system/application/views/members
+https://alastairdewar.springloops.com/source/empireevolution
+add
+
+
+
+
+
+
+
+svn:special svn:externals svn:needs-lock
+
+logout.php
+file
+
+
+
+add
+
+member_register.php
+file
+
+
+
+add
+
+register_success.php
+file
+
+
+
+add
+
+confirmation_success.php
+file
+
+
+
+add
+
+profile.php
+file
+
+
+
+add
+
+initial_login.php
+file
+
+
+
+add
+
+view_all.php
+file
+
+
+
+add
+
+register.php
+file
+
+
+
+add
+
+user_dashboard.php
+file
+
+
+
+add
+
+dashboard.php
+file
+
+
+
+add
+
+login.php
+file
+
+
+
+add
+

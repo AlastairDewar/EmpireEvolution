@@ -1,0 +1,119 @@
+<?php
+
+class Building extends Controller {
+
+  function Building()
+  {
+	parent::Controller();
+	$this->load->library('parser');
+	$this->load->model('Building_model');
+  }
+
+  function index()
+  {
+	if($this->Member_model->logged_in())
+	{
+		$this->building_panel();
+	}
+	else
+	{
+		$this->load->view('member_login');	
+	}
+  }
+
+  function building_panel()
+  {
+	if($this->Member_model->logged_in())
+	{
+		// TODO Load the building panel	
+	}
+	else
+	{
+		$this->load->view('member_login');	
+	}
+  }
+
+  function upgrade($uid)
+  {
+	if($this->Member_model->logged_in())
+	{
+		// TODO Check for validity in uid
+		// TODO Start the upgrade checks
+		// TODO Check for comfirmation?
+		// TODO Upgrade the building
+	}
+	else
+	{
+		$this->load->view('member_login');
+	}
+  }
+
+  function can_upgrade($uid)
+  {
+	if($this->Member_model->logged_in())
+	{
+		// TODO Check for validity in uid
+		// TODO Perform the upgrade checks
+		// TODO Return boolean value
+	}
+	else
+ 	{	
+		$this->load->view('member_login');	
+	}
+  }
+
+  function information($uid)
+  {
+		// TODO Check for validity in uid
+		// TODO Load the building_info view 
+  }
+
+  function edit($uid)
+  {
+	if($this->Member_model->logged_in())
+	{			
+		// TODO Check for validity in uid
+		// TODO Check for administrator rights
+		// TODO Check for confirmation
+		// TODO Load the building_edit view OR process it
+	}
+	else
+	{
+		$this->load->view('member_login');	
+	}
+  }
+
+  function add()
+  {
+	if($this->Member_model->logged_in())
+	{
+		// TODO Check for validity in uid
+		// TODO Check for administrator rights
+		// TODO Check for confirmation
+		// TODO Load the building_add view OR process it
+	}
+	else
+	{
+		$this->load->view('member_login');	
+	}
+  }
+
+  function remove($uid)
+  {
+	if($this->Member_model->logged_in())
+	{
+		// TODO Check for validity in uid
+		// TODO Check for administrator rights
+		// TODO Check for confirmation
+		// TODO Load the building_remove view OR process it
+	}
+	else
+	{
+		$this->load->view('member_login');	
+	}
+  }
+
+}
+
+/* End of file building.php */
+/* Location: ./system/application/controllers/building.php */

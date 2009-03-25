@@ -1,0 +1,76 @@
+<html>
+<head>
+<title>Welcome to Empire Evolution</title>
+
+<style type="text/css">
+
+body {
+ background-color: #fff;
+ margin: 40px;
+ font-family: Lucida Grande, Verdana, Sans-serif;
+ font-size: 14px;
+ color: #4F5155;
+}
+
+a {
+ color: #003399;
+ background-color: transparent;
+ font-weight: normal;
+}
+
+h1 {
+ color: #444;
+ background-color: transparent;
+ border-bottom: 1px solid #D0D0D0;
+ font-size: 16px;
+ font-weight: bold;
+ margin: 24px 0 2px 0;
+ padding: 5px 0 6px 0;
+}
+
+code {
+ font-family: Monaco, Verdana, Sans-serif;
+ font-size: 12px;
+ background-color: #f9f9f9;
+ border: 1px solid #D0D0D0;
+ color: #002166;
+ display: block;
+ margin: 14px 0 14px 0;
+ padding: 12px 10px 12px 10px;
+}
+
+.error {
+ background: #FBE6F2;
+ border: 1px solid #D893A1;
+ color: #333;
+ margin: 10px 0 5px 0;
+ padding: 10px;
+}
+
+
+</style>
+</head>
+<body>
+
+<h1>Welcome to Empire Evolution!</h1>
+
+<p>This is where you register for Empire Evolution.</p>
+
+<?php echo validation_errors(); ?>
+
+<?php echo form_open('member/register'); ?>
+
+<h5>Username</h5>
+<input type="text" name="username" value="<?php echo set_value('username'); ?>" size="50" />
+
+<h5>Password</h5>
+<input type="password" name="password" value="<?php echo set_value('password'); ?>" size="50" />
+
+<div><input type="submit" value="Submit" /></div>
+
+</form>
+
+<p><br />Page rendered in {elapsed_time} seconds</p>
+
+</body>
+</html>
