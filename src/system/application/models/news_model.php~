@@ -61,11 +61,12 @@ class News_model extends Model
   }
   function is_public($uid)
   {
-    $sql = 'SELECT * FROM news_articles WHERE uid = '.$uid.';';
+    $sql = 'SELECT * FROM news_articles WHERE uid = '.$uid.' LIMIT 1;';
 	$query = $this->db->query($sql);
 	if($query->num_rows() == 1){
 		$data = $query->result_array();
-		if($data['published'] == 0){return FALSE;}else{
+		$data = $data[0];
+		if($data['published'] != 1){return FALSE;}else{
 			if($data['deleted'] == 1){return FALSE;}else{return TRUE;}}
 	}else{return FALSE;}
   }

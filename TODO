@@ -1,0 +1,13 @@
+Remove all traces of my MySQL password and stuff, oops.
+Change member logs in admin dashboard to show all changes made to administrators accounts, all changes to a user made by an administrator
+Implement some for of update system, to prevent gradual changes. Maybe allow gradual changes in case of emergencies but email all super admins?
+Need to make more checks that for example news titles are of a certain length and not empty etc.
+Really need to plan out the bonus system
+Sort out a rss feed for members, im thinking of just scrapping the one for adminstrators
+Maybe draw out an object diagram?
+A better understanding really wouldnt go a amiss
+	Ex.	Member_model function update_name(){
+							$currentMember = findMember($unique_identifier);
+							if($currentMember != null){
+							$currentMember->set_username($new_name);}}
+	My whole code so far could be so much neater if i adopted OOP, its just so confusing with the MVC architechture

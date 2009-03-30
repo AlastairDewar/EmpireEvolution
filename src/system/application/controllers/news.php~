@@ -17,29 +17,32 @@ class News extends Controller
 	$this->latest_articles();	
   }
 
-  function edit_publication()
+  function edit_article_publication()
   {
 
   }	
 
   function view($uid)
   {
+		$uid = (int) $uid;
 		if($uid != 0 && is_int($uid))
 		{
 			if($this->News_model->article_exists($uid) && $this->News_model->is_public($uid))
 			{
-				$template_data = $this->News_model->get_article($uid);
+				$template_data = array();
+				$template_data['article'] = $this->News_model->get_article($uid);
 				if($template_data == null){redirect('news/invalid');}
 				// TODO Check for validity (visible, valid uid)
-				// TODO Load the news_view_article view
-			}else{redirec('news/invalid');}
+				$this->parser->parse('news/view_article', $template_data);
+			}else{redirect('news/invalid');}
 		}else{redirect('news');}
   }
   function latest_articles()
   {
-	$template_data = $this->News_model->get_latest_articles(3);
+	$template_data = array();
+	$template_data['articles'] = $this->News_model->get_latest_articles(3);
 	// TODO format the template data in News_model
-	$this->parser->parse('news/overview', $template_data);
+	$this->parser->parse('news/main', $template_data);
   }
   function archive()
   {
@@ -160,7 +163,8 @@ class News extends Controller
 			}else{redirect('news/overview/delete','refresh');}
 		}else{redirect('error/insufficient_rights','refresh');}
 	}else{redirect('member/login','refresh');}
-  }  function overview()
+  }
+  function overview()
   {
 		if($this->Member_model->logged_in())
 		{		

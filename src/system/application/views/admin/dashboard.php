@@ -26,7 +26,7 @@
 		<?php //echo form_open('admin/notes'); ?>
 	<textarea cols="73" rows="15"></textarea>
 	<input type="submit" name="save_notes" value="Save notes"/>
-      <br class="clear" />
+      <br class="clear" /><br class="clear" />
 	  <p class="center"><strong>All</strong> actions are logged, backed up and reviewed regularly. All misconduct is duely noted.</p>
   </div>
       <div id="sidebar">
