@@ -5,9 +5,7 @@ class Building {
    var $name = "";
    var $description = "";
 
-   var $gold_required = 0;
-   var $stone_required = 0;
-   var $wood_required = 0;
+   var $resources_required = array();
 
    function Building($ini_unique, $ini_name, $ini_description) {
 	# Change these to set when set and gets are done
