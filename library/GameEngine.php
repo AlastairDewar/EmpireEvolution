@@ -8,7 +8,7 @@ class GameEngine {
    var $log = null;
 
    function __construct() {
-	$this->log("Initiating game engine");
+	print "Initiating game engine";
 	# Start database connection
 		 $this->database = new Database();
 	# Fire up the loader
@@ -18,32 +18,26 @@ class GameEngine {
    function __destruct() {
 	# Destroy database connection
 		unset($this->database);
-	$this->log("Destroyed game enginge");
+	print "Destroyed game enginge";
    }
 
    function load_player($unique) {
-	$this->log("Loading player ".$unique);
+	print "Loading player ".$unique;
 	#$this->player = new Player($unique);
-   }
-
-   function log($string) {
-	$message = "[".date("H:i:s")."] ".$string."\n";
-	print $message;
-	$this->log = $this->log . "\n" . $message;
    }
 }
 
 class Loader extends GameEngine {
 
    function __construct() {
-        $this->log("Initiating loading sequence");
+        print "Initiating loading sequence";
 	# Check for cache first to reduce database server load
 	if($this->buildings == null) {
 	$this->load_buildings();}else{
-	$this->log("Loading buildings from cache");}
+	print "Loading buildings from cache";}
 	if($this->research == null) {
 	$this->load_research();}else{
-	$this->log("Loading research from cache");}
+	print "Loading research from cache";}
    }
    
    function load_buildings() {
@@ -57,7 +51,7 @@ class Loader extends GameEngine {
 		# Add building to engine
 			# array_push($this->buildings, $current_building);
 		#}
-	$this->log("Loaded buildings");
+	print "Loaded buildings";
    }
 
    function load_research() {
@@ -66,7 +60,7 @@ class Loader extends GameEngine {
    }
 
    function __destruct() {
-       $this->log("Finished loading sequence");
+       print "Finished loading sequence";
    }
 }
 ?>

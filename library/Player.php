@@ -1,8 +1,17 @@
 <?php
 class Player {
 
+   /*
+    *   The players unique identifier
+    */
    var $unique = 0;
+   /*
+    *   The players username
+    */
    var $username = "";
+   /*
+    *   Links to PlayerBuilding objects related to the player
+    */
    var $buildings = array();
 
    function __construct() {
