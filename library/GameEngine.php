@@ -5,7 +5,6 @@ class GameEngine {
    var $buildings = array();
    var $research = array();
    var $player = null;
-   var $log = null;
 
    function __construct() {
 	print "Initiating game engine\n";
